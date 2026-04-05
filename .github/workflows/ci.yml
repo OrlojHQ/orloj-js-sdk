@@ -39,11 +39,10 @@ jobs:
           node-version: "22"
           registry-url: https://registry.npmjs.org
           cache: npm
-      - name: Use npm CLI with Trusted Publishing support
-        run: npm install -g npm@^11.5.1
+      # Trusted Publishing needs npm ≥ 11.5.1; global `npm i -g npm@11` can break on hosted runners.
       - run: npm ci
       - run: npm run build
-      - run: npm publish
+      - run: npx --yes npm@11.5.1 publish
 
   release:
     needs: publish
