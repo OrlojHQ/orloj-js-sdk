@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Orloj documentation
+    url: https://docs.orloj.dev
+    about: Runtime, API reference, and guides for the Orloj platform
+  - name: HTTP API reference
+    url: https://docs.orloj.dev/reference/api
+    about: Official REST API shapes and paths

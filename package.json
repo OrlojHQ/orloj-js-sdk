@@ -1,0 +1,47 @@
+{
+  "name": "orloj",
+  "version": "0.1.0",
+  "description": "Official TypeScript SDK for the Orloj multi-agent orchestration platform",
+  "license": "Apache-2.0",
+  "author": "Orloj HQ",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OrlojHQ/orloj-js-sdk.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": ["dist", "src"],
+  "engines": { "node": ">=18.0.0" },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.esm.json && tsc -p tsconfig.build.cjs.json && printf '%s' '{\"type\":\"module\"}' > dist/esm/package.json && printf '%s' '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/ tests/ examples/",
+    "example:quickstart": "tsx examples/quickstart.ts",
+    "example:watch-tasks": "tsx examples/watch-tasks.ts",
+    "example:multi-agent": "tsx examples/multi-agent-system.ts",
+    "example:server": "tsx examples/node-server.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "express": "^4.21.0",
+    "msw": "^2.2.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.5.0"
+  }
+}
