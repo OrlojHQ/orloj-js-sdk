@@ -1,6 +1,6 @@
 {
   "name": "orloj",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Official TypeScript SDK for the Orloj multi-agent orchestration platform",
   "license": "Apache-2.0",
   "author": "Orloj HQ",
@@ -19,8 +19,13 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
-  "files": ["dist", "src"],
-  "engines": { "node": ">=18.0.0" },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.esm.json && tsc -p tsconfig.build.cjs.json && printf '%s' '{\"type\":\"module\"}' > dist/esm/package.json && printf '%s' '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
     "test": "vitest run",
