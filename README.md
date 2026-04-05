@@ -1,6 +1,13 @@
 # Orloj JS SDK
 
-Official TypeScript SDK for the Orloj multi-agent orchestration platform.
+Official TypeScript SDK for the [Orloj](https://orloj.dev) multi-agent orchestration platform.
+
+**Resources**
+
+- [orloj.dev](https://orloj.dev) — product site  
+- [docs.orloj.dev](https://docs.orloj.dev) — documentation  
+- [HTTP API reference](https://docs.orloj.dev/reference/api) — endpoints this client implements  
+- [OrlojHQ/orloj](https://github.com/OrlojHQ/orloj) — main Orloj repository  
 
 ## Install
 
@@ -34,6 +41,7 @@ for await (const event of stream) {
 
 ## Configuration
 
+
 | Option       | Default                 | Env fallbacks                                        |
 | ------------ | ----------------------- | ---------------------------------------------------- |
 | `baseUrl`    | `http://127.0.0.1:8080` | `ORLOJCTL_SERVER`, then `ORLOJ_SERVER`               |
@@ -42,6 +50,7 @@ for await (const event of stream) {
 | `timeout`    | `30000` (ms)            | —                                                    |
 | `maxRetries` | `0`                     | Retries GETs on 429 / 503 / transient network errors |
 | `fetch`      | `globalThis.fetch`      | Custom implementation (e.g. tests or polyfills)      |
+
 
 Environment variables are read only when `process` exists (Node, Bun, etc.). In browsers, pass `baseUrl` and `apiToken` explicitly.
 
@@ -56,7 +65,7 @@ Environment variables are read only when `process` exists (Node, Bun, etc.). In 
 
 ## API alignment
 
-The client follows the [HTTP API reference](https://docs.orloj.dev/reference/api): resource CRUD under `/v1/{resource}`, watches (`/v1/tasks/watch`, etc.), **`GET /v1/auth/me`**, token management on **`/v1/tokens`**, **`GET /healthz`**, **`GET /v1/capabilities`**, **`GET /v1/namespaces`**, and **`GET /v1/tasks/{name}/messages`** / **`GET /v1/tasks/{name}/metrics`**. List responses use a top-level **`continue`** cursor (with `metadata.continue` still supported for compatibility).
+The client follows the [HTTP API reference](https://docs.orloj.dev/reference/api): resource CRUD under `/v1/{resource}`, watches (`/v1/tasks/watch`, etc.), `**GET /v1/auth/me`**, token management on `**/v1/tokens**`, `**GET /healthz**`, `**GET /v1/capabilities**`, `**GET /v1/namespaces**`, and `**GET /v1/tasks/{name}/messages**` / `**GET /v1/tasks/{name}/metrics**`. List responses use a top-level `**continue**` cursor (with `metadata.continue` still supported for compatibility).
 
 ## Examples
 
@@ -73,6 +82,7 @@ Examples use `new OrlojClient({})`, so `ORLOJ_API_TOKEN` and optional `ORLOJ_SER
 
 ## Scripts
 
+
 | Command              | Description                                                                                           |
 | -------------------- | ----------------------------------------------------------------------------------------------------- |
 | `npm run build`      | ESM + CJS + `.d.ts` into `dist/`                                                                      |
@@ -81,6 +91,7 @@ Examples use `new OrlojClient({})`, so `ORLOJ_API_TOKEN` and optional `ORLOJ_SER
 | `npm run typecheck`  | `tsc --noEmit`                                                                                        |
 | `npm run lint`       | ESLint (`src/`, `tests/`, `examples/`)                                                                |
 | `npm run example:*`  | `example:quickstart`, `example:watch-tasks`, `example:multi-agent`, `example:server` (requires `tsx`) |
+
 
 ## License
 
